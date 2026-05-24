@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+
+Sitemap: https://pantry-ai-frontend.onrender.com/sitemap.xml

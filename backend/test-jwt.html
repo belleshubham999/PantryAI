@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JWT Test</title>
+</head>
+<body>
+    <h2>JWT Backend Test</h2>
+    
+    <div>
+        <h3>1. Register</h3>
+        <input type="email" id="regEmail" placeholder="Email" value="test5@example.com">
+        <input type="password" id="regPassword" placeholder="Password" value="password123">
+        <input type="text" id="regName" placeholder="Name" value="Test User5">
+        <button onclick="register()">Register</button>
+    </div>
+
+    <div>
+        <h3>2. Login</h3>
+        <input type="email" id="loginEmail" placeholder="Email" value="test5@example.com">
+        <input type="password" id="loginPassword" placeholder="Password" value="password123">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div>
+        <h3>3. Test Protected Route</h3>
+        <button onclick="testProtected()">Get Pantry Items</button>
+    </div>
+
+    <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;"></div>
+
+    <script>
+        let currentToken = '';
+
+        function showResult(data) {
+            document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        }
+
+        async function register() {
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const name = document.getElementById('regName').value;
+
+            try {
+                const response = await fetch('http://localhost:3001/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, name })
+                });
+                const data = await response.json();
+                showResult(data);
+                if (data.token) {
+                    currentToken = data.token;
+                    alert('Registration successful! Token saved.');
+                }
+            } catch (error) {
+                showResult({ error: error.message });
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch('http://localhost:3001/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                showResult(data);
+                if (data.token) {
+                    currentToken = data.token;
+                    alert('Login successful! Token saved.');
+                }
+            } catch (error) {
+                showResult({ error: error.message });
+            }
+        }
+
+        async function testProtected() {
+            if (!currentToken) {
+                alert('Please login first to get a token!');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3001/api/pantry', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${currentToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                showResult(data);
+            } catch (error) {
+                showResult({ error: error.message });
+            }
+        }
+    </script>
+</body>
+</html>

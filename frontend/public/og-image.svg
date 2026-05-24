@@ -1,0 +1,59 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff"/>
+      <stop offset="100%" style="stop-color:#f0fdf4"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 72px; font-weight: bold; fill: #1f2937; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 36px; font-weight: 600; fill: #3b82f6; }
+      .tagline { font-family: Arial, sans-serif; font-size: 24px; fill: #6b7280; }
+      .footer { font-family: Arial, sans-serif; font-size: 20px; font-weight: 600; fill: white; }
+      .feature-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Top accent bar -->
+  <rect width="1200" height="8" fill="url(#accentGradient)"/>
+
+  <!-- Logo circle -->
+  <circle cx="600" cy="120" r="60" fill="white" stroke="#3b82f6" stroke-width="2"/>
+  <text x="600" y="140" text-anchor="middle" class="title" fill="#3b82f6" font-size="60">🍳</text>
+
+  <!-- Main heading -->
+  <text x="600" y="250" text-anchor="middle" class="title">PantryAI</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="310" text-anchor="middle" class="subtitle">Smart Meal Planning</text>
+
+  <!-- Tagline -->
+  <text x="600" y="350" text-anchor="middle" class="tagline">Made Simple</text>
+
+  <!-- Feature boxes -->
+  <!-- Box 1 -->
+  <rect x="200" y="390" width="280" height="70" rx="10" fill="#e0e7ff" opacity="0.8"/>
+  <text x="340" y="435" text-anchor="middle" class="feature-text" fill="#3b82f6">🍝 Discover</text>
+
+  <!-- Box 2 -->
+  <rect x="520" y="390" width="280" height="70" rx="10" fill="#d1fae5" opacity="0.8"/>
+  <text x="660" y="435" text-anchor="middle" class="feature-text" fill="#10b981">📋 Plan Meals</text>
+
+  <!-- Box 3 -->
+  <rect x="840" y="390" width="280" height="70" rx="10" fill="#fed7aa" opacity="0.8"/>
+  <text x="980" y="435" text-anchor="middle" class="feature-text" fill="#d97706">🥘 Save Recipes</text>
+
+  <!-- Bottom accent bar -->
+  <rect y="550" width="1200" height="80" fill="url(#accentGradient)"/>
+
+  <!-- Footer text -->
+  <text x="600" y="605" text-anchor="middle" class="footer">
+    Browse recipes • Plan meals • Manage pantry
+  </text>
+</svg>

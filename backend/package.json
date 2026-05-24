@@ -1,0 +1,26 @@
+{
+  "name": "pantry-ai-backend",
+  "version": "1.0.0",
+  "description": "Backend for PantryAI application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --dns-result-order=ipv4first server.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.86.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.11",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

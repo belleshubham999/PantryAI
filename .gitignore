@@ -1,0 +1,39 @@
+# --- Node.js Dependencies ---
+node_modules/
+**/node_modules/
+
+# --- Environment & Secrets ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env*
+
+# --- IDEs & System Files ---
+.vscode/
+**/.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Build & Runtime Artifacts ---
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+*.log
+**/logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Python / AI specific (For ai-service / pantry-ai if applicable) ---
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+**/venv/
+env/
+**/env/

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: pantry-ai-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: SUPABASE_URL
+        value: https://jlgpnhramdytqvvxszet.supabase.co
+      - key: SUPABASE_SERVICE_KEY
+        value: your_service_role_key
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SPOONACULAR_API_KEY
+        value: aadb0195f37d45ef84789714d37606c6

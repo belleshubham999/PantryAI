@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate OG Image</title>
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="630"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Create gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+        gradient.addColorStop(0, '#f0f9ff');
+        gradient.addColorStop(1, '#f0fdf4');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1200, 630);
+
+        // Top accent bar
+        const topGradient = ctx.createLinearGradient(0, 0, 1200, 0);
+        topGradient.addColorStop(0, '#3b82f6');
+        topGradient.addColorStop(1, '#10b981');
+        ctx.fillStyle = topGradient;
+        ctx.fillRect(0, 0, 1200, 8);
+
+        // Logo circle
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(600, 150, 70, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#3b82f6';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Logo text
+        ctx.fillStyle = '#3b82f6';
+        ctx.font = 'bold 80px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('AI', 600, 150);
+
+        // Main heading
+        ctx.fillStyle = '#1f2937';
+        ctx.font = 'bold 72px Arial';
+        ctx.fillText('PantryAI', 600, 280);
+
+        // Subtitle
+        ctx.fillStyle = '#3b82f6';
+        ctx.font = '600 36px Arial';
+        ctx.fillText('Smart Meal Planning', 600, 340);
+
+        // Tagline
+        ctx.fillStyle = '#6b7280';
+        ctx.font = '28px Arial';
+        ctx.fillText('Made Simple', 600, 390);
+
+        // Feature pills
+        const pills = [
+            { x: 250, label: '🍝 Discover Recipes', color: '#e0e7ff', textColor: '#3b82f6' },
+            { x: 570, label: '📋 Plan Meals', color: '#d1fae5', textColor: '#10b981' },
+            { x: 890, label: '🥘 Save Recipes', color: '#fed7aa', textColor: '#d97706' }
+        ];
+
+        pills.forEach(pill => {
+            ctx.fillStyle = pill.color;
+            ctx.globalAlpha = 0.7;
+            ctx.beginPath();
+            ctx.roundRect(pill.x, 440, 280, 50, 25);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+
+            ctx.fillStyle = pill.textColor;
+            ctx.font = '600 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(pill.label, pill.x + 140, 475);
+        });
+
+        // Bottom accent bar
+        const bottomGradient = ctx.createLinearGradient(0, 570, 1200, 570);
+        bottomGradient.addColorStop(0, '#3b82f6');
+        bottomGradient.addColorStop(1, '#10b981');
+        ctx.fillStyle = bottomGradient;
+        ctx.fillRect(0, 570, 1200, 60);
+
+        // Footer text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '600 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Browse recipes, plan meals, and manage your pantry', 600, 605);
+
+        // Convert to PNG and download
+        canvas.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'og-image.png';
+            document.body.appendChild(a);
+            a.click();
+            console.log('OG image generated and downloaded!');
+        }, 'image/png');
+    </script>
+</body>
+</html>
